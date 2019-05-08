@@ -99,12 +99,9 @@ public class CountryAdapter extends BaseAdapter implements Filterable {
             int count = list.size();
             final ArrayList<Country> nlist = new ArrayList<>(count);
 
-            Country filterableString;
-
-            for (int i = 0; i < count; i++) {
-                filterableString = list.get(i);
-                if (filterableString.getName().toLowerCase().contains(filterString) || filterableString.getCode().toLowerCase().contains(filterString) || filterableString.getDialCode().toLowerCase().contains(filterString)) {
-                    nlist.add(filterableString);
+            for (Country item : list) {
+                if (item.getName().toLowerCase().contains(filterString) || item.getCode().toLowerCase().contains(filterString) || item.getDialCode().toLowerCase().contains(filterString)) {
+                    nlist.add(item);
                 }
             }
 
