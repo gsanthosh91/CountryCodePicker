@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,10 +13,11 @@ import android.widget.Toast;
 import com.gsanthosh91.countrypicker.Country;
 import com.gsanthosh91.countrypicker.CountryPickerActivity;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
-    TextView dialCode;
-    TextView flag, name;
+    TextView name, dialCode, flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Country localeCountry = Country.getCountryByLocale(Locale.getDefault());
+        initCountry(localeCountry);
     }
 
 

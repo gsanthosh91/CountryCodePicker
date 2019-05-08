@@ -3,9 +3,11 @@ package com.gsanthosh91.countrypicker;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
@@ -57,7 +59,7 @@ public class Country implements Serializable {
     }
 
 
-    public List<Country> getAllCountries() {
+    public static List<Country> getAllCountries() {
 
 
         Country[] COUNTRIES = {
@@ -321,7 +323,7 @@ public class Country implements Serializable {
         return Arrays.asList(COUNTRIES);
     }
 
-    public String getEmojiByUnicode(int unicode1, int unicode2) {
+    public static String getEmojiByUnicode(int unicode1, int unicode2) {
         return new String(Character.toChars(unicode1)) + new String(Character.toChars(unicode2));
     }
 
@@ -331,5 +333,22 @@ public class Country implements Serializable {
 
     public void setFlag(String flag) {
         this.flag = flag;
+    }
+
+
+    public static Country getCountryByLocale(Locale locale) {
+        Country country = new Country();
+        country.setCode(locale.getCountry());
+        List<Country> countries = getAllCountries();
+        int index = Collections.binarySearch(countries, country, new CountryCodeComparator());
+        return countries.get(index);
+    }
+
+
+    public static class CountryCodeComparator implements Comparator<Country> {
+        @Override
+        public int compare(Country country, Country t1) {
+            return country.code.compareTo(t1.code);
+        }
     }
 }
