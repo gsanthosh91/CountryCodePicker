@@ -3,7 +3,9 @@
     package="com.gsanthosh91.countrypicker">
 
     <application>
-        <activity android:name=".CountryPickerActivity"></activity>
+        <activity android:name=".CountryPickerActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:label="@string/select_a_country"/>
     </application>
 
 </manifest>

@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,15 +32,34 @@ public class CountryPickerActivity extends AppCompatActivity {
         Country country = new Country();
 
         countryList = country.getAllCountries();
-        CountryAdapter adapter = new CountryAdapter(this, countryList);
+        final CountryAdapter adapter = new CountryAdapter(this, countryList);
         countryListView.setAdapter(adapter);
         countryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Country country = countryList.get(position);
+                Country country = adapter.getItem(position);
                 finishResult(country);
             }
         });
+
+        EditText searchEditText = findViewById(R.id.searchEditText);
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                System.out.println("Text [" + s + "]");
+                adapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
 
     }
 

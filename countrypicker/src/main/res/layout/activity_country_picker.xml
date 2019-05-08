@@ -7,6 +7,17 @@
     android:orientation="vertical"
     tools:context=".CountryPickerActivity">
 
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/button_border"
+        android:hint="Search..."
+        android:inputType="textAutoComplete"
+        android:textSize="18sp"
+        android:padding="12dp" />
+
     <ListView
         android:id="@+id/countryListView"
         android:layout_width="match_parent"
