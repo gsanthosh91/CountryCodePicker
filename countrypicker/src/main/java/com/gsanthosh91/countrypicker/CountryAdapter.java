@@ -103,7 +103,7 @@ public class CountryAdapter extends BaseAdapter implements Filterable {
 
             for (int i = 0; i < count; i++) {
                 filterableString = list.get(i);
-                if (filterableString.getName().toLowerCase().contains(filterString)) {
+                if (filterableString.getName().toLowerCase().contains(filterString) || filterableString.getCode().toLowerCase().contains(filterString) || filterableString.getDialCode().toLowerCase().contains(filterString)) {
                     nlist.add(filterableString);
                 }
             }
