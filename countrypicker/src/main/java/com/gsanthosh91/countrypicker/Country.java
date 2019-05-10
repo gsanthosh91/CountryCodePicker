@@ -337,11 +337,19 @@ public class Country implements Serializable {
 
 
     public static Country getCountryByLocale(Locale locale) {
+        return getCountryByCode(locale.getCountry());
+    }
+
+    public static Country getCountryByCode(String countryCode) {
         Country country = new Country();
-        country.setCode(locale.getCountry());
+        country.setCode(countryCode);
         List<Country> countries = getAllCountries();
         int index = Collections.binarySearch(countries, country, new CountryCodeComparator());
-        return countries.get(index);
+        if (index >= 0) {
+            return countries.get(index);
+        } else {
+            return countries.get(0);
+        }
     }
 
 

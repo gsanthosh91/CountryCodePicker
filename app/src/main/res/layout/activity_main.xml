@@ -15,15 +15,14 @@
         android:orientation="horizontal"
         android:padding="1dp">
 
-        <TextView
+        <com.gsanthosh91.countrypicker.CountryView
             android:id="@+id/dialCode"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="#FAF6F6"
-            android:gravity="center"
-            android:hint="+1"
             android:padding="12dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:country="US" />
 
         <EditText
             android:id="@+id/phoneNumber"
@@ -36,31 +35,4 @@
             android:textSize="18sp" />
 
     </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <TextView
-            android:id="@+id/flag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="12dp"
-            android:textSize="100sp"
-            tools:text="flag" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp" />
-
-
-    </LinearLayout>
-
-
 </LinearLayout>

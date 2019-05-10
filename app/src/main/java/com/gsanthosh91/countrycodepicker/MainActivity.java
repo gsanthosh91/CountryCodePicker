@@ -12,22 +12,21 @@ import android.widget.Toast;
 
 import com.gsanthosh91.countrypicker.Country;
 import com.gsanthosh91.countrypicker.CountryPickerActivity;
+import com.gsanthosh91.countrypicker.CountryView;
 
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView name, dialCode, flag;
+    CountryView dialCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        name = findViewById(R.id.name);
-        flag = findViewById(R.id.flag);
-
         dialCode = findViewById(R.id.dialCode);
+
         dialCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 11);
             }
         });
-
-        Country localeCountry = Country.getCountryByLocale(Locale.getDefault());
-        initCountry(localeCountry);
     }
 
 
@@ -53,10 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     void initCountry(Country country) {
-        dialCode.setText(String.format("%s %s", country.getFlag(), country.getDialCode()));
-
-        flag.setText(country.getFlag());
-        name.setText(String.format("Country name: %s\nCountry code: %s\nDial code: %s", country.getName(), country.getCode(), country.getDialCode()));
+        dialCode.setCountry(country.getCode());
     }
 
 }
