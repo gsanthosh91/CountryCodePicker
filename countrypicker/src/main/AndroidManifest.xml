@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gsanthosh91.countrypicker">
 
-    <application>
-        <activity android:name=".CountryPickerActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:label="@string/select_a_country"/>
-    </application>
+    <application/>
 
 </manifest>

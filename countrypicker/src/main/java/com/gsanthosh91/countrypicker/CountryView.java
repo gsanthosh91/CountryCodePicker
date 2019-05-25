@@ -1,15 +1,22 @@
 package com.gsanthosh91.countrypicker;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.util.AttributeSet;
+import android.view.View;
 
 public class CountryView extends android.support.v7.widget.AppCompatTextView {
 
     private Context mContext;
     String countryCode = "AD";
+    private View.OnClickListener mCountryCodeHolderClickListener;
+    private CountryCodeDialog mCountryCodeDialog;
+
 
     public CountryView(Context context) {
         super(context);
@@ -43,6 +50,22 @@ public class CountryView extends android.support.v7.widget.AppCompatTextView {
             setText(String.format("%s %s", country.getFlag(), country.getDialCode()));
         }
 
+        mCountryCodeHolderClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isClickable()) {
+                    if (mCountryCodeDialog == null) {
+                        mCountryCodeDialog = new CountryCodeDialog(CountryView.this);
+                    }
+
+                    mCountryCodeDialog.show();
+                }
+            }
+        };
+
+        setOnClickListener(mCountryCodeHolderClickListener);
+
+
         arr.recycle();
     }
 
@@ -68,5 +91,10 @@ public class CountryView extends android.support.v7.widget.AppCompatTextView {
             setText(String.format("%s %s", country.getFlag(), country.getDialCode()));
         }
         arr.recycle();
+    }
+
+    @SuppressWarnings("unused")
+    private OnClickListener getCountryCodeHolderClickListener() {
+        return mCountryCodeHolderClickListener;
     }
 }

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".CountryPickerActivity">
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/searchEditText"
@@ -14,9 +11,10 @@
         android:layout_margin="8dp"
         android:background="@drawable/button_border"
         android:hint="Search..."
+        android:imeOptions="actionSend|flagNoEnterAction"
         android:inputType="textAutoComplete"
-        android:textSize="18sp"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:textSize="18sp" />
 
     <ListView
         android:id="@+id/countryListView"
